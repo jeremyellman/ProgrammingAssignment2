@@ -2,6 +2,8 @@
 ## functions do
 
 ## Write a short comment describing this function
+##
+## JE 20 July 15 -- initial commit to check git-ability
 
 makeCacheMatrix <- function(x = matrix()) {
 
