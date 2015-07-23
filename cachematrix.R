@@ -28,7 +28,10 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 ## Write a short comment describing this function
+## Use this to comment the call to solve to get the matrix inverse.
+## should only need to see this message once for any cache matrix
 
 cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
+    print("Calling Cache Solve")
 }
