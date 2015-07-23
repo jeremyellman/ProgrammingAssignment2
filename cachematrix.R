@@ -1,11 +1,7 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
-
+                                                                                                                  
 # Function is needed for the assignment
 
-# The first function, makeCache Matrix creates a special "Cache Matrix", 
+# The first function, makeCache Matrix creates a special "Cache Matrix",
 #which is really a list containing a function to
 #1. set the value of the Cache Matrix
 #2. get the value of the Cache Matrix
@@ -14,13 +10,17 @@
 
 makeCacheMatrix <- function(x = matrix()) {
     inv <- NULL
-    set <- function(y) {
+#save value into environment
+        set <- function(y) {
         x <<- y
         inv <<- NULL
     }
     get <- function() x
+    #save Inverse
     setInv <- function(MInverse) inv <<- MInverse
+    #get inverse
     getInv <- function() inv
+    # return object as list of functions and data
     list(set = set, get = get,
          setInverse = setInv,
          getInverse = getInv)
@@ -34,20 +34,20 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
     m <- x$getInverse()
-    if(!is.null(m)) {
+    if(!is.null(m)) {   # cache hit
         message("getting cached data")
-        return(m)
+        return(m) # return cached matrix inverse
     }
-    data <- x$get()
+    data <- x$get() # get the matrix data from x, then solve the matrix
     m <- solve(data, ...)
-    x$setInverse(m)
+    x$setInverse(m) #store the matrix inverse and return that
     m
 }
 
 # Example data for testing
 # mymat = matrix (c(1,2,3,4,0,1,2,1,0,0,-1,-5,1,0,0,6), nrow=4, ncol=4)
-# solve(mymat)
-# mymatt = t(mymat)
+# solve(mymat) # actual inverse
+# mymatt = t(mymat) # not needed but matrix transpose
 # solve(mymatt)
-# mc = makeCacheMatrix(mymatt)
-# cacheSolve(mc)
+# m
+# cacheSolve(mc) #call to cache solve. call again should not print out message
